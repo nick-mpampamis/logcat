@@ -45,6 +45,7 @@ public class LogcatPlugin implements MethodCallHandler {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 log.append(line);
+                log.append(System.getProperty("line.separator"));
             }
             return log.toString();
         } catch (IOException e) {
