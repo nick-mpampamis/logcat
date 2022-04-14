@@ -3,11 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logcat/logcat.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('logcat');
+  const MethodChannel channel = MethodChannel('app.channel.logcat');
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
+      return 'Simulated logcat';
     });
   });
 
@@ -15,7 +15,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await Logcat.platformVersion, '42');
+  test('execute', () async {
+    expect(await Logcat.execute(), 'Simulated logcat');
   });
 }
